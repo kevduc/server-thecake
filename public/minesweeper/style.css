@@ -1,0 +1,97 @@
+/* #main, #game_area, table { */
+	/* border: 1px solid black; */
+/* } */
+
+body {
+	text-align: center;
+}
+
+#main {
+	background-color: rgb(192,192,192);
+	display: inline-block;
+	padding: 8px;
+	border: 4px ridge rgb(20,20,192);
+	/* border-radius: 5px 5px 0px 0px; */
+}
+
+#dashboard, .display, #grid, #grid td.unrevealed:active, button:active {
+	border-style: inset;
+	border-top-color: lightgray;
+	border-left-color: lightgray;
+	border-bottom-color: white;
+	border-right-color: white;
+}
+
+#grid td.unrevealed, button {
+	border-style: outset;
+	border-top-color: white;
+	border-left-color: white;
+	border-bottom-color: lightgray;
+	border-right-color: lightgray;
+}
+
+#dashboard {
+	width: 100%;
+	margin-bottom: 10px;
+	
+	border-width: 3px;
+}
+
+button {
+	font-weight: bold;
+	border-width: 3px;
+}
+
+.item { text-align: center; }
+.item-left, .item-right { width: 50px; }
+
+.display {
+	width: 50px;
+	height: 20px;
+	padding: 0px;
+	line-height: 20px;
+	display: inline-block;
+	background-color: black;
+	color: red;
+	font-family: "Courier New", Courier, monospace;
+	font-weight: bold;
+	letter-spacing: -1px;
+	
+	border-width: 1px;
+}
+
+#grid {
+	min-height: 200px;
+	min-width: 200px;
+	
+	display: inline-block;
+	border-spacing: 0px;
+	padding: 0px;
+	
+	border-width: 5px;
+}
+
+#grid td {
+	box-sizing: border-box;
+	width: 25px;
+	height: 25px;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: "Courier New", Courier, monospace;
+	text-align: center;
+	padding: 0px;
+	background-color: rgb(192,192,192);
+	
+	border-width: 3px;
+}
+
+img.tile {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+#grid td.revealed {
+	border: 1px solid gray;
+}
+	

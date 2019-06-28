@@ -1,0 +1,11 @@
+::selection { background:white; }
+
+::-moz-selection { background:white; }
+
+:selection { background:white; }
+
+.colorContainer {
+	cursor:move;
+	position:fixed;
+	/*background:url(empty_eye.png) no-repeat center center;*/
+}

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta name="author" content="TheCake" />
+		<meta name="copyright" content="2012&copy;" />
+		<meta name="description" content="" />
+		<meta name="distribution" content="web" />
+		<meta name="googlebot" content="nofollow" />
+		<meta name="keywords" content="" />
+		<meta name="owner" content="TheCake" />
+		<meta name="robots" content="NOFOLLOW" />
+		<meta http-equiv="content-language" content="fr-FR" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		
+	<!--[if !IE]> <-->
+		<script>
+			var inH, inW;
+			function actualiserDims() {
+				inH = window.innerHeight;
+				inW = window.innerWidth;
+				document.getElementsByTagName("body")[0].style.width = inW + "px";
+				document.getElementsByTagName("body")[0].style.height = inH + "px";
+			}
+		</script>
+	<!--> <![endif]-->
+	<!--[if IE]>
+		<script>
+			var inH, inW;
+			function actualiserDims() {
+				inH = screen.availHeight-window.screenTop;
+				inW = screen.availWidth-window.screenLeft;
+				document.getElementsByTagName("body")[0].style.width = inW + "px";
+				document.getElementsByTagName("body")[0].style.height = inH + "px";
+			}
+		</script>
+	<![endif]-->
+
+		<script type="text/javascript" src="js_couleurs.js"></script>
+		
+		<link rel="stylesheet" href="styles.css" type="text/css" media="all">
+
+		<title>Couleurs</title>
+	</head>
+
+	<body style="overflow:hidden; background-color:white; margin:0px; " onLoad="init(new Array('0,0,0', '255,0,0', '0,255,0', '0,0,255', '0,0,0,.05'), 70, 50, 4);" onMouseMove="move(event); changerPoubelle(event); //document.getElementsByTagName('a')[0].innerHTML += ' '+event.clientX+','+event.clientY;" onClick="//alert(event.clientX+' '+event.clientY);" onSelect="return false;" onResize="actualiserDims(); actualiserPos();">
+		<h2 align="center" style=" margin:0px; padding-top:20px; ">
+			Mélange les couleurs !
+		</h2><!-- ajouter poubelle + hexa + sauvegarde? + bouton trier (par rapport couleur)? + -->
+		
+		<!-- Firefox --><!--
+		<div style="text-align:center; position:absolute; top:0px; left:0px; ">
+			<span>Optimisé pour</span>
+			<a href="http://www.mozilla.org/firefox?WT.mc_id=aff_en07&WT.mc_ev=click">
+				<div style="height:50px; width:134px; background: white url(header-firefox.png) no-repeat center center; "></div>
+			</a>
+		</div>-->
+		
+		<!-- RAZ -->
+		<div style="position:absolute; bottom:10px; left:10px; ">
+			<input style="height:20px; border-radius:10px; color:#444; font-weight:bold; " type="button" onClick="location.reload();" value="RAZ"/>
+		</div>
+			
+		<!-- Poubelle -->
+		<div id="poubelle" onDblClick="undoPoubelle()" style="text-align:center; position:absolute; bottom:5px; right:5px; height:146px; width:78px; background: white url(pf.png) no-repeat left bottom; "></div>
+	</body>
+</html>
