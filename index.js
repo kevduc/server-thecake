@@ -6,4 +6,4 @@ app.use(express.static(__dirname + "/public"));
 
 app.get("/cake", (req, res) => res.send("Do you like cake?"));
 
-app.listen(port, () => console.log(`App listening on port ${port}!`));
+app.listen(port, () => console.log(`App listening on port ${port}.`));

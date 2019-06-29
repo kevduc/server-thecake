@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tables de Multiplication</title>
+		<meta name="author" content="TheCake" />
+		<meta name="copyright" content="2014&copy;" />
+		<meta name="description" content="" />
+		<meta name="distribution" content="web" />
+		<meta name="googlebot" content="nofollow" />
+		<meta name="keywords" content="" />
+		<meta name="owner" content="TheCake" />
+		<meta name="robots" content="NOFOLLOW" />
+		<meta http-equiv="content-language" content="fr-FR" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+      
+      <style type="text/css">
+			@font-face { font-family:erasdust; src:url('erasdust.ttf'); }
+			body, input.answer, button { font-family:erasdust,Calibri,Sans-Serif; }
+
+         body { background-color:#fefefe; font-size:18px; margin:0px; padding:0px; }
+         #body_container, button, input.answer { color:#eee; font-weight:bold; }
+         #game_container, fieldset, #menu_container legend, button, input.answer { background-color:transparent; }
+         
+         #body_container, #main_container, #game_container, #resultContainer { -webkit-transition:height 0.5s ease-in-out; transition:height 0.5s ease-in-out; }
+         #game_container, #resultContainer, .calc { -webkit-transition:opacity 0.5s ease-in-out; transition:opacity 0.5s ease-in-out; }
+         #game_container, fieldset { border-radius:20px; padding:10px 20px; }
+         
+         #body_container { background:#001500 url("chalkboard_texture.jpg") no-repeat fixed center; border:8px ridge #ccc; border-radius:5px; margin:80px auto; overflow-y:hidden; padding:0px; width:800px; height:425px; position:relative; }
+         #main_container { margin:0px auto; padding:0px; width:700px; }
+         #menu_container { height:250px; }
+         #game_container { height:0px; margin-top:54px; opacity:0.0; position:relative; }
+
+         h1, h2 { text-align:center; }
+         h1.main_title { font-size:50px; margin-bottom:35px; }
+         #game_timer, #result_counter, fieldset h2 { font-size:40px; }
+         #game_timer { margin:10px 0px 18px 0px; }
+         
+         #menu_container fieldset { height:140px; margin-bottom:10px; border:none; }
+         #menu_container legend { font-size:23px; line-height:30px; border-radius:20px; padding:2px 5px; }
+         p.radio { font-size:23px; letter-spacing:0.2px; line-height:25px; width:120px; margin:0px auto; padding:0px; }
+         p.button { margin:0px; padding:30px; text-align:center; }
+         button { margin:0px; padding:5px 10px; border-radius:10px; border:none; font-size:20px; }
+         button:hover { font-size:28px; }
+         
+         #calc_container { margin:0px auto; text-align:center; }
+         #calc_counter { margin:0px; padding:5px 10px; position:absolute; top:0px; right:0px; }
+         .calc, input.answer { font-size:28px; }
+         .calc { margin:0px 0px 0px 25px; padding:0px; opacity:0.0; }
+         input.answer { border:none; width:40px; }
+         img.check { width:25px; height:25px; margin:0px 0px 0px 8px; padding:0px; float:right; }
+         
+         #result_container { text-align:center; margin:0px; padding:10px; height:0px; opacity:0.0; overflow-y:hidden; }
+         #result_counter, fieldset h2 { margin:-10px 0px 18px 0px; }
+         #col_container { text-align:center; margin:0px auto; padding-left:45px; }
+         div.calcCol { float:left; text-align:left; margin:0px auto; }
+         p.calcCol { margin:5px 10px; font-size:22px; }
+         
+         #restart { position:absolute; right:5px; bottom:5px; display:none; }
+      </style>
+      
+		<script type="text/javascript">
+         var timeToAnswer = -1, timerValue, gameTimerID, calcNum = 0, nbCalcBons = 0, nbCalcMax = 20, colNum = 0, nbCalcMaxCol = 5, nb1Calc, nb2Calc, answers = new Array(nbCalcMax);
+         var menuContainer, gameContainer, calcContainer, gameTimer, calcCounter, resultContainer, resultCounter, colContainer;
+         
+         /*function delay(ms) {
+            ms += new Date().getTime();
+            while (new Date() < ms){}
+         }*/
+         
+         function randomInt(min, max) {
+            return Math.floor(Math.random() * (max-min + 1) + min);
+         }
+         
+         function init() {
+            menuContainer = document.getElementById("menu_container");
+            gameContainer = document.getElementById("game_container");
+            calcContainer = document.getElementById("calc_container");
+            gameTimer = document.getElementById("game_timer");
+            calcCounter = document.getElementById("calc_counter");
+            resultContainer = document.getElementById("result_container");
+            resultCounter = document.getElementById("result_counter");
+            colContainer = document.getElementById("col_container");
+         }
+         
+         function getDifficulty(radioField) {
+            var pos = 0;
+            
+            for (var i = 0; i < radioField.length; i++)
+               pos += radioField[i].checked ? i : 0;
+               
+            timeToAnswer = radioField[pos].value;
+         }
+         
+         function displayGameContainer() {
+            //menuContainer.style.height = "0px";
+            gameContainer.style.height = "121px";
+            //menuContainer.style.opacity = "0.0";
+            gameContainer.style.opacity = "1.0";
+            menuContainer.style.display = "none";
+         }
+         
+         function displayResultContainer() {
+            resultContainer.style.height = "250px";
+            resultContainer.style.opacity = "1.0";
+            gameContainer.style.display = "none";
+         }
+         
+         function displayTimerValue(message) {
+            gameTimer.innerHTML = message;
+         }
+         
+         function displayCounterValue() {
+            calcCounter.innerHTML = "n°"+calcNum+"/"+nbCalcMax;
+         }
+         
+         function generateHtmlCalc(nb1, nb2, type) {
+            return "<p class=\"calc\" id=\"calc"+calcNum+"\">"+nb1+" "+type+" "+nb2+" = <input type=\"text\" class=\"answer\" id=\"answer"+calcNum+"\" value=\"?\" onKeyDown=\"if (this.value == '?') this.value = '';\" maxlength=\"2\" /><img class=\"check\" src=\"empty.png\"/></p>";
+         }
+         
+         function generateHtmlCalcCol(nb1, nb2, type, res) {
+            return "<p class=\"calcCol\" id=\"calc"+calcNum+"_col\">"+nb1+" "+type+" "+nb2+" = "+res+"<img class=\"check\" src=\"empty.png\"/></p>";
+         }
+         
+         function addCalcImage(ok) {
+            document.getElementById("calc"+calcNum+"_col").getElementsByTagName('img')[0].src = ok ? "dialog-apply.png" : "dialog-cancel.png";
+         }
+         
+         function addResult(calc) {
+            if (!((calcNum-1)%nbCalcMaxCol)) {
+               colNum++;
+               colContainer.innerHTML += "<div class=\"calcCol\" id=\"col"+colNum+"\"></div>";
+            }
+            
+            document.getElementById('col'+colNum).innerHTML += calc;
+         }
+         
+         function handlePreviousCalc() {
+            if (calcNum) {
+               answers[calcNum] = document.getElementById("answer"+calcNum).value;
+               var ok = answers[calcNum] == nb1Calc*nb2Calc;
+               addResult(generateHtmlCalcCol(nb1Calc, nb2Calc, "x", answers[calcNum]));
+               addCalcImage(ok);
+               nbCalcBons += ok;
+               document.getElementById("calc"+calcNum).style.display = "none";
+            }
+         }
+         
+         function generateNextCalc() {
+            calcNum++;
+            displayCounterValue();
+            nb1Calc = randomInt(1, 9);
+            nb2Calc = randomInt(5, 9);
+            calcContainer.innerHTML += generateHtmlCalc(nb1Calc, nb2Calc, "x");
+            window.setTimeout(function(){document.getElementById("calc"+calcNum).style.opacity = "1.0";}, 0);
+            document.getElementById("answer"+calcNum).focus();
+         }
+         
+         function decrementTimer() {
+            if (--timerValue < 0) {
+               timerValue = timeToAnswer;
+               handlePreviousCalc();
+               generateNextCalc();
+            }
+            
+            if (calcNum > nbCalcMax)
+               stopGame();
+            else
+               displayTimerValue(timerValue);
+         }
+         
+         function startTimer() {
+            timerValue = 0;
+            gameTimerID = window.setInterval(decrementTimer, 1000);
+         }
+         
+         function startGame() {
+            var ms = 500;
+            displayGameContainer();
+            window.setTimeout(function(){displayTimerValue("Pr&ecirc;t ?");},ms+=800);
+            window.setTimeout(function(){displayTimerValue("Go !");},ms+=1500);
+            window.setTimeout(function(){startTimer();},ms);
+            window.setTimeout(function(){document.getElementById('restart').style.display = "initial";},ms+=1000);
+         }
+         
+         function stopGame() {
+            window.clearInterval(gameTimerID);
+            displayResultContainer();
+            resultCounter.innerHTML = "Bonnes r&eacute;ponses : "+nbCalcBons+"/"+nbCalcMax;
+         }
+      
+      </script>
+	</head>
+	<body onLoad="init();">
+      <div id="body_container">
+      <div id="main_container">
+         <h1 class="main_title">Tables de Multiplication</h1>
+         
+         <div id="menu_container">
+            <form name="diffMenu" id="diffMenu">
+               <fieldset>
+                  <h2>Difficult&eacute;</h2>
+                  <p class="radio">
+                     <!--<input type="radio" name="difficulty" id="diffPeaceful" value="-1" />
+                     <label for="diffPeaceful">Paisible</label><br/>-->
+                     
+                     <input type="radio" name="difficulty" id="diffEasy" value="10" />
+                     <label for="diffEasy">Facile</label><br/>
+
+                     <input type="radio" name="difficulty" id="diffNormal" value="5" checked="checked" />
+                     <label for="diffNormal">Normal</label><br/>
+
+                     <input type="radio" name="difficulty" id="diffHard" value="2" />
+                     <label for="diffHard">Difficile</label><br/>
+
+                     <input type="radio" name="difficulty" id="diffExtr" value="0" />
+                     <label for="diffExtr">Extr&ecirc;me</label><br/>
+                  </p>
+               </fieldset>
+               <p class="button">
+                  <button type="button" id="diffGo" onClick="getDifficulty(difficulty); startGame();">C'est parti !</button>
+               </p>
+            </form>
+         </div>
+         
+         <div id="game_container">
+            <h2 id="game_timer"></h2>
+            <h3 id="calc_counter"></h3>
+            <div id="calc_container"></div>
+         </div>
+         
+         <div id="result_container">
+            <h2 id="result_counter"></h2>
+            <div id="col_container"></div>
+         </div>
+      </div>
+      
+      <button type="button" id="restart" onClick="location.reload();">Recommencer</button>
+      </div>
+	</body>
+</html>
