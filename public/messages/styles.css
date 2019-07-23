@@ -1,0 +1,28 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#content {
+  height: 80%;
+  width: 100%;
+  border: 1px solid black;
+  overflow-y: scroll;
+  position: relative;
+}
+
+#messages {
+  position: absolute;
+  bottom: 0;
+  word-break: break-all;
+  width: 100%;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
