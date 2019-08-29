@@ -9,7 +9,7 @@ let blocked = false;
 
 app.use(express.static(__dirname + "/public"));
 app.use(express.json()); // to support JSON-encoded bodies
-app.use(express.urlencoded()); // to support URL-encoded bodies
+app.use(express.urlencoded({ extended: true })); // to support URL-encoded bodies
 
 app.get("/cake", (req, res) => res.send("Do you like cake?"));
 
@@ -38,4 +38,6 @@ app.post("/messages/send", (req, res) => {
   res.end();
 });
 
-app.listen(port, () => console.log(`App listening on port ${port}.`));
+app.listen(port, () => {
+  console.log(`App listening on port ${port}.`);
+});
