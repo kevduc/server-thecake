@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Times Tables</title>
+   <meta name="author" content="TheCake" />
+   <meta name="copyright" content="2014&copy;" />
+   <meta name="description" content="" />
+   <meta name="distribution" content="web" />
+   <meta name="googlebot" content="nofollow" />
+   <meta name="keywords" content="" />
+   <meta name="owner" content="TheCake" />
+   <meta name="robots" content="NOFOLLOW" />
+   <meta http-equiv="content-language" content="en-UK" />
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+   <link rel="stylesheet" href="styles.css" />
+
+   <script src="main.js"></script>
+</head>
+
+<body onLoad="init();">
+   <div id="body_container">
+      <div id="main_container">
+         <h1 class="main_title">Times Tables</h1>
+
+         <div id="menu_container">
+            <form name="diffMenu" id="diffMenu">
+               <fieldset>
+                  <h2>Difficulty</h2>
+                  <p class="radio">
+                     <!--<input type="radio" name="difficulty" id="diffPeaceful" value="-1" />
+                     <label for="diffPeaceful">Paisible</label><br/>-->
+
+                     <input type="radio" name="difficulty" id="diffEasy" value="10" />
+                     <label for="diffEasy">Easy</label><br />
+
+                     <input type="radio" name="difficulty" id="diffNormal" value="5" checked="checked" />
+                     <label for="diffNormal">Normal</label><br />
+
+                     <input type="radio" name="difficulty" id="diffHard" value="2" />
+                     <label for="diffHard">Hard</label><br />
+
+                     <input type="radio" name="difficulty" id="diffExtr" value="0" />
+                     <label for="diffExtr">Extreme</label><br />
+                  </p>
+               </fieldset>
+               <p class="button">
+                  <button type="button" id="diffGo" onClick="getDifficulty(difficulty); startGame();">Let's go!</button>
+               </p>
+            </form>
+         </div>
+
+         <div id="game_container">
+            <h2 id="game_timer"></h2>
+            <h3 id="calc_counter"></h3>
+            <div id="calc_container"></div>
+         </div>
+
+         <div id="result_container">
+            <h2 id="result_counter"></h2>
+            <div id="col_container"></div>
+         </div>
+      </div>
+
+      <button type="button" id="restart" onClick="location.reload();">Restart</button>
+   </div>
+</body>
+
+</html>

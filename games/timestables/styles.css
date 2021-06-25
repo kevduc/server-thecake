@@ -1,0 +1,193 @@
+@font-face {
+  font-family: erasdust;
+  src: url("erasdust.ttf");
+}
+body,
+input.answer,
+button {
+  font-family: erasdust, Calibri, Sans-Serif;
+}
+
+body {
+  background-color: #fefefe;
+  font-size: 18px;
+  margin: 0px;
+  padding: 0px;
+}
+#body_container,
+button,
+input.answer {
+  color: #eee;
+  font-weight: bold;
+}
+#game_container,
+fieldset,
+#menu_container legend,
+button,
+input.answer {
+  background-color: transparent;
+}
+
+#body_container,
+#main_container,
+#game_container,
+#resultContainer {
+  -webkit-transition: height 0.5s ease-in-out;
+  transition: height 0.5s ease-in-out;
+}
+#game_container,
+#resultContainer,
+.calc {
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+#game_container,
+fieldset {
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+#body_container {
+  background: #001500 url("chalkboard_texture_crop.jpg");
+  background-size: cover;
+  border: 8px ridge #ccc;
+  border-radius: 5px;
+  margin: 80px auto;
+  overflow-y: hidden;
+  padding: 0px;
+  width: 800px;
+  height: 425px;
+  position: relative;
+}
+#main_container {
+  margin: 0px auto;
+  padding: 0px;
+  width: 700px;
+}
+#menu_container {
+  height: 250px;
+}
+#game_container {
+  height: 0px;
+  margin-top: 54px;
+  opacity: 0;
+  position: relative;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+h1.main_title {
+  font-size: 50px;
+  margin-bottom: 35px;
+}
+#game_timer,
+#result_counter,
+fieldset h2 {
+  font-size: 40px;
+}
+#game_timer {
+  margin: 10px 0px 18px 0px;
+}
+
+#menu_container fieldset {
+  height: 140px;
+  margin-bottom: 10px;
+  border: none;
+}
+#menu_container legend {
+  font-size: 23px;
+  line-height: 30px;
+  border-radius: 20px;
+  padding: 2px 5px;
+}
+p.radio {
+  font-size: 23px;
+  letter-spacing: 0.2px;
+  line-height: 25px;
+  width: 120px;
+  margin: 0px auto;
+  padding: 0px;
+}
+p.button {
+  margin: 0px;
+  padding: 30px;
+  text-align: center;
+}
+button {
+  margin: 0px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 25px;
+}
+button:hover {
+  font-size: 32px;
+}
+
+#calc_container {
+  margin: 0px auto;
+  text-align: center;
+}
+#calc_counter {
+  margin: 0px;
+  padding: 5px 10px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.calc,
+input.answer {
+  font-size: 28px;
+}
+.calc {
+  margin: 0px 0px 0px 25px;
+  padding: 0px;
+  opacity: 0;
+}
+input.answer {
+  border: none;
+  width: 40px;
+}
+img.check {
+  width: 25px;
+  height: 25px;
+  margin: 0px 0px 0px 8px;
+  padding: 0px;
+  float: right;
+}
+
+#result_container {
+  text-align: center;
+  margin: 0px;
+  padding: 10px;
+  height: 0px;
+  opacity: 0;
+  overflow-y: hidden;
+}
+#result_counter,
+fieldset h2 {
+  margin: -10px 0px 18px 0px;
+}
+#col_container {
+  text-align: center;
+  margin: 0px auto;
+  padding-left: 45px;
+}
+div.calcCol {
+  float: left;
+  text-align: left;
+  margin: 0px auto;
+}
+p.calcCol {
+  margin: 5px 10px;
+  font-size: 22px;
+}
+
+#restart {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  display: none;
+}

@@ -1,0 +1,15 @@
+main {
+  width: 80em;
+  margin: auto;
+  padding-left: 0.5em;
+}
+
+header {
+  padding-top: 1em;
+  height: 8em;
+}
+
+nav {
+  border-left: 4px solid rgb(216, 216, 216);
+  padding: 1em 0.5em 0.5em 1em;
+}
