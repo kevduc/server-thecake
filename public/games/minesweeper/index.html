@@ -1,21 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Minesweeper</title>
-	<link rel="stylesheet" href="style.css">
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="script.js"></script>
-</head>
-<body>
-	<div id="main">
-		<table id="dashboard"><tr>
-			<td class="item item-left"><span class="display" id="flags_left">---</span><input id="nb_mines" class="display" type="text" value="" /></td>
-			<td class="item item-center"><button type="button" id="btn">-</button></td>
-			<td class="item item-right"><span class="display" id="time">--:--</span></td>
-		</tr></table>
-		<table id="grid">
-		</table>
-	</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div id="main">
+      <table id="dashboard">
+        <tr>
+          <td class="item item-left">
+            <span class="display" id="flags_left">---</span><input id="nb_mines" class="display" type="text" value="" />
+          </td>
+          <td class="item item-center"><button type="button" id="btn">-</button></td>
+          <td class="item item-right"><span class="display" id="time">--:--</span></td>
+        </tr>
+      </table>
+      <table id="grid"></table>
+    </div>
+  </body>
 </html>
