@@ -10,7 +10,7 @@ body {
 	background-color: rgb(192,192,192);
 	display: inline-block;
 	padding: 8px;
-	border: 4px ridge rgb(20,20,192);
+	border: 3px outset lightgray;
 	/* border-radius: 5px 5px 0px 0px; */
 }
 
